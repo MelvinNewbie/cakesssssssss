@@ -23,11 +23,11 @@
         <h2>Login</h2>
         <div class="form-group">
           <span>Username</span>
-          <input type="text" placeholder="Username" name="username">
+          <input type="text" placeholder="Username" name="username" required>
         </div>
         <div class="form-group">
           <span>Password</span>
-          <input type="password" placeholder="Password" name="password">
+          <input type="password" placeholder="Password" name="password" required>
         </div>
         <div class="button">
           <input type="submit" value="Login">

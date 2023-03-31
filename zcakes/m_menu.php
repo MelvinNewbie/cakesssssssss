@@ -171,17 +171,8 @@
                 <div class="content">
                     <div class="textbox">
                         <h2 class="ms-5 mb-3">Design a cake of your own. Only <br>with <span>ZCAKES</span></h2>
-                            <p>Welcome to ZCakes, your local home-based cake shop specializing in custom-made cupcakes and cakes!
-                                We create unique and personalized cakes and cupcakes that are perfect for any occasion. From birthdays 
-                                and weddings to baby showers and holidays! So why settle for generic store-bought cakes when you can have 
-                                a custom-made dessert that reflects your individual style and taste? Come taste the difference and let us 
-                                sweeten your day at ZCakes!
-                            </p>
                         </div>
                     </div>
-                <div class="text-center" style="border-radius: 15px;">
-                    <a class="btn btn-dark mx-auto text-wrap bg-black me-5" href="m_menu.php">Order Now!</a>
-                </div>
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-5">
