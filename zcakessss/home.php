@@ -129,7 +129,7 @@
                         </div>
                     </div>
                 <div class="text-center" style="border-radius: 15px;">
-                    <a class="btn btn-dark mx-auto text-wrap bg-black me-5" href="m_menu.php">Order Now!</a>
+                    <a class="btn btn-dark mx-auto text-wrap bg-black me-5" href="product.php">Order Now!</a>
                 </div>
             </div>
             <div class="col-sm-1"></div>

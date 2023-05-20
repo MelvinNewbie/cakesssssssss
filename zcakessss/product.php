@@ -1,21 +1,22 @@
 <?php 
 include_once "conn_db.php";
 
+include("product_func.php");
 
-if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
-    $user_id = $_SESSION['user_id'];
-    $item_id = $_POST['product_id'];
-    $item_qty = $_POST['product_qty'];
+// if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
+//     $user_id = $_SESSION['user_id'];
+//     $item_id = $_POST['product_id'];
+//     $item_qty = $_POST['product_qty'];
     
-    if(isset($_POST['add_to_cart'])){
-        $redirect_url = "./user_addcart.php?item_id=$item_id&item_qty=$item_qty&user_id=$user_id";
-    } else {
-        $redirect_url = "./user_checkout.php?item_id=$item_id&item_qty=$item_qty&user_id=$user_id";
-    }
+//     if(isset($_POST['add_to_cart'])){
+//         $redirect_url = "./user_addcart.php?item_id=$item_id&item_qty=$item_qty&user_id=$user_id";
+//     } else {
+//         $redirect_url = "./user_checkout.php?item_id=$item_id&item_qty=$item_qty&user_id=$user_id";
+//     }
     
-    header("Location: " . $redirect_url);
-    exit();
-}
+//     header("Location: " . $redirect_url);
+//     exit();
+// }
 ?>
 
 <head>
@@ -37,6 +38,8 @@ if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
     <style>
         body {
             background-image: url("images/bgg.jpg");
+            background-attachment: fixed;
+            overflow: auto; /* or overflow: scroll; */
             background-size: cover;
             background-position: flex;
             background-repeat: repeat;
@@ -134,6 +137,8 @@ if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
             margin-top: 10px;
         }
 
+        
+
         .buy-button {
             display: inline-block;
             padding: 8px 16px;
@@ -162,6 +167,10 @@ if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
             background-color: #ff6b6b;
             color: black;
         }
+        .card_size{
+            width: 280px;
+            
+        }
     </style>
 </head>
 
@@ -177,159 +186,359 @@ if(isset($_POST['add_to_cart']) || isset($_POST['buy_now'])){
             <h1>FEATURED CAKES</h1>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/bento1.png" alt="">
                         <div class="card-body">
-                            <h6>250.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Blue Bento" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="250.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>";
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/bento2.png" alt="">
                         <div class="card-body">
-                            <h6>250.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento white" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="250.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
 
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; 
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/bento3.png" alt="">
                         <div class="card-body">
-                            <h6>250.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Flower Bento" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="250.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; 
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/bento4.png" alt="">
                         <div class="card-body">
-                            <h6>250.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="HBD Bento" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="250.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>";
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <h4>Cakes</h4>
+            <!-- <div class="row">
+                
+            </div> -->
+
+            <h4 class="mt-5">Cakes</h4>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/lay1.jpg" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // ok na dito produc_id 1 for blue bento
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>";
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/lay2.jpg" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>";
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/lay3.jpg" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; 
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/lay5.jpg" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 1 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>";
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <h4>Cupcakes</h4>
+            <!-- <div class="row">
+                
+            </div> -->
+
+            <h4 class="mt-5">Cupcakes</h4>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/cc8.png" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 123 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; // Replace 1 with the desired product ID
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/cc9.png" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 123 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; // Replace 1 with the desired product ID
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/cc10.png" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 123 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; // Replace 1 with the desired product ID
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+
+                <div class="col-md-3">
+                    <div class="card card_size">
                         <img src="images/cc11.png" alt="">
                         <div class="card-body">
-                            <h6>800.00</h6>
-                            <a href="#" class="buy-button" data-toggle="modal" data-target="#modal-bento"
-                                data-name="Bento Cake 1" data-description="This is a delicious and beautifully decorated bento cake. It is perfect for any occasion and will delight your taste buds." data-price="600.00">Buy</a>
-                            <a href="user_cart.php" class="buy-button">Add to Cart</a>
+                        <?php
+                            $product_details = getProductDetails(1, $conn); // Replace 123 with the desired product ID
+
+                            if ($product_details) {
+                                $product_id = $product_details['product_id'];
+                                $product_name = $product_details['product_name'];
+                                $product_price = $product_details['product_price'];
+
+                                echo "<h5>$product_name</h5>";
+                                echo "<h6>Php. $product_price</h6>";
+                
+                                echo "<form action='user_addcart.php' method='POST'>";
+                                echo "<input type='hidden' name='product_id' value='$product_id'>"; // Replace 1 with the desired product ID
+                                echo '<input type="hidden" name="item_qty" value="1" min="1" max="99" style="display: inline-block; width: 50px;">';
+                                echo "<button type='submit' class='buy-button'>Add to Cart</button>";
+                                echo "</form>";
+                            } else {
+                                echo "Product not found.";
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            <!-- <div class="row">
+                
+            </div> -->
 
             <!-- Modal for all products -->
     <div class="modal fade" id="modal-bento" tabindex="-1" role="dialog" aria-labelledby="modal-bento-label"

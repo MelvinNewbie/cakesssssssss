@@ -17,6 +17,11 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
+    define("LOGGED_IMG_FOLDER","../img");
+    define("CONN",$conn);
+    define("CURRENCY","Php ");
+
+
     // Include func.php file
     include_once "func.php";
 
