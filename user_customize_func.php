@@ -106,5 +106,46 @@
         }
     }    
 
+    function getCcFilling($cc_filling_id, $conn) {
+        $sql = "SELECT * FROM z_cc_filling WHERE cc_filling_id = '$cc_filling_id'";
+        $result = mysqli_query($conn, $sql);
+    
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+    
+            $cc_filling = array(
+                'cc_filling_id' => $row['cc_filling_id'],
+                'cc_filling' => $row['cupcake_filling'],
+                'cc_filling_img' => $row['cc_filling_img'],
+                'cc_filling_price' => $row['filling_price']
+            );
+    
+            return $cc_filling;
+        } else {
+            return null;
+        }
+    }
+
+    function getCcsize($cc_size_id, $conn) {
+        $sql = "SELECT * FROM z_cc_size WHERE cupcake_size_id = '$cc_size_id'";
+        $result = mysqli_query($conn, $sql);
+    
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+    
+            $cc_size = array(
+                'cc_size_id' => $row['cupcake_size_id'],
+                'cc_size' => $row['cupcake_size'],
+                'cc_size_img' => $row['cc_size_img'],
+                'cc_size_price' => $row['cc_size_price']
+            );
+    
+            return $cc_size;
+        } else {
+            return null;
+        }
+    }
+    
+
 ?>
 
