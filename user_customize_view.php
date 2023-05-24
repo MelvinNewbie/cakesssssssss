@@ -98,8 +98,8 @@
                         $customize= $stmt_products->fetchAll(PDO::FETCH_ASSOC);
 
                        
-
-                        echo "<table class='table table-bordered'>";
+                    
+                        echo "<table class='table table-bordered text-center'>";
                         echo "<thead>";
                             echo "<th>Category Name</th>";
                             echo "<th>Cake Shape</th>";
@@ -108,7 +108,7 @@
                             echo "<th>Cake Frosting</th>";
                             echo "<th>Dedication</th>";
                             echo "<th>Total</th>";
-                            echo "<th>Remove</th>";
+                            echo "<th>Action</th>";
                         echo "</thead>";
                         
                     $Grandtotal = 0; // Initialize grand total
@@ -127,12 +127,16 @@
                             echo "<td>Php " . $row['total'] . "</td>";
                             echo "<td><a class='btn btn-danger' href='user_customize_remove.php?details_id=". $row['details_id'] ."'> Remove </a> </td>";
                         echo "</tr>";
+                        echo '<form action="user_customize_viewbackend.php" method="post">';
+                        echo "<td colspan='7'></td>"; 
+                        echo '<input type="hidden" name="details_id" value="' . $row['details_id'] . '" />';         
+                        echo '<td><button type="submit" class="btn btn-success">Checkout</button></td>';                 
+                        echo "</tr>";
+                        echo "</form>";
                         }
-                        echo "</tr>";
-                        echo "<td colspan='7'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>";           
-                        echo '<td><a class="btn btn-success me-5" href="m_checkout.php">Checkout</a></td>';                 
-                        echo "</tr>";
+                        echo "<td colspan='8'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
                         echo "</table>";
+                        
                     ?>
                 
 

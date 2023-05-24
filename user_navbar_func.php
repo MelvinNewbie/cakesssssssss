@@ -22,6 +22,10 @@ function renderCustomNavbar()
                     <li class="nav-item">
                         <a class="nav-link active" href="user_customize.php">CUSTOMIZE</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="user_customize_view.php">VIEW</a>
+                    </li>
                     
                     <li class="nav-item">
                         <a class="nav-link active" href="about_us.php">ABOUT US</a>
