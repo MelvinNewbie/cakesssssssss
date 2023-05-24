@@ -489,6 +489,17 @@ body {
                     </div>
                 </div>
 
+                <div class="card mt-3 border border-dark" style="background-color: pink;">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Step 5: Enter Message or Request</h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <textarea class="form-control" name="item_desc" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
