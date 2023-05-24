@@ -78,7 +78,7 @@ body {
                 <div class="col-12">
                     <div class="card mt-3 border border-dark" style="background-color: pink;">
                         <div class="card-body">
-                            <h1 class="card-title text-center">Cake Customization Form</h1>
+                            <h1 class="card-title text-center">Cupcake Customization Form</h1>
                         </div>
                             <?php
                                 $cat_details = getCategory(3, $conn); // Replace 1 with the desired product ID
@@ -98,7 +98,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 1: Select Cake Shape</h3>
+                        <h3 class="card-title mb-4">Step 1: Select Cupcake Filling</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
@@ -173,7 +173,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 2: Select Cake Size</h3>
+                        <h3 class="card-title mb-4">Step 2: Select Cupcake Size</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
@@ -229,7 +229,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 3: Select Cake Flavor</h3>
+                        <h3 class="card-title mb-4">Step 3: Select Cupcake Flavor</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
@@ -327,7 +327,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 4: Select Cake Frosting</h3>
+                        <h3 class="card-title mb-4">Step 4: Select Cupcake Frosting</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
