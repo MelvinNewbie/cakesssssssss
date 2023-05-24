@@ -81,7 +81,7 @@ body {
                             <h1 class="card-title text-center">Cake Customization Form</h1>
                         </div>
                             <?php
-                                $cat_details = getCategory(1, $conn); // Replace 1 with the desired product ID
+                                $cat_details = getCategory(2, $conn); // Replace 1 with the desired product ID
                                 if ($cat_details) {
                                     $cat_id = $cat_details['category_id'];
                                     echo "<input type='hidden' name='cat_id' value='$cat_id'>";
@@ -109,7 +109,7 @@ body {
                                             $cake_shape = $shape['cake_shape'];
                                             $shape_photo = $shape['shape_photo'];
 	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
+                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(33, 'shape')" required>
                                     <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
@@ -131,7 +131,7 @@ body {
                                             $cake_shape = $shape['cake_shape'];
                                             $shape_photo = $shape['shape_photo'];
 	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
+                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(33, 'shape')" required>
                                     <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
@@ -153,7 +153,7 @@ body {
                                             $cake_shape = $shape['cake_shape'];
                                             $shape_photo = $shape['shape_photo'];
 	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
+                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(33, 'shape')" required>
                                     <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
@@ -175,7 +175,7 @@ body {
                                             $cake_shape = $shape['cake_shape'];
                                             $shape_photo = $shape['shape_photo'];
 	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
+                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(33, 'shape')" required>
                                     <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
@@ -191,126 +191,11 @@ body {
                     </div>
                 </div>
 
-                <!-- Cake Size -->
-
-                <div class="card mt-3 border border-dark" style="background-color: pink;">
-                    <div class="card-body">
-                        <h3 class="card-title mb-4">Step 2: Select Cake Size</h3>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(1, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(2, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(3, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(4, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(5, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Cake Flavor -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 3: Select Cake Flavor</h3>
+                        <h3 class="card-title mb-4">Step 2: Select Cake Flavor</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
@@ -321,7 +206,7 @@ body {
                                             $cake_flavor = $flavor['cake_flavor'];
                                             $flavor_img = $flavor['flavor_img'];
                                             $flavor_price = $flavor['flavor_price']; ?>
-                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(25, 'flavor')" required>
+                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(33, 'flavor')" required>
                                     <label class="form-check-label" for="<?php echo "flavor$flavor_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
@@ -343,7 +228,7 @@ body {
                                             $cake_flavor = $flavor['cake_flavor'];
                                             $flavor_img = $flavor['flavor_img'];
                                             $flavor_price = $flavor['flavor_price']; ?>
-                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(25, 'flavor')" required>
+                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(33, 'flavor')" required>
                                     <label class="form-check-label" for="<?php echo "flavor$flavor_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
@@ -365,7 +250,7 @@ body {
                                             $cake_flavor = $flavor['cake_flavor'];
                                             $flavor_img = $flavor['flavor_img'];
                                             $flavor_price = $flavor['flavor_price']; ?>
-                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(25, 'flavor')" required>
+                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(33, 'flavor')" required>
                                     <label class="form-check-label" for="<?php echo "flavor$flavor_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
@@ -387,7 +272,7 @@ body {
                                             $cake_flavor = $flavor['cake_flavor'];
                                             $flavor_img = $flavor['flavor_img'];
                                             $flavor_price = $flavor['flavor_price']; ?>
-                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(25, 'flavor')" required>
+                                    <input class="form-check-input" type="radio" name="flavor" id="<?php echo "flavor$flavor_id"; ?>" value="<?php echo $flavor_id; ?>" onchange="updateProgressBar(33, 'flavor')" required>
                                     <label class="form-check-label" for="<?php echo "flavor$flavor_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
@@ -408,7 +293,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 4: Select Cake Frosting</h3>
+                        <h3 class="card-title mb-4">Step 3: Select Cake Frosting</h3>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
@@ -419,7 +304,7 @@ body {
                                             $cake_frosting = $frosting['cake_frosting'];
                                             $frosting_img = $frosting['frosting_img'];
                                             $frosting_price = $frosting['frosting_price']; ?>
-                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(25, 'frosting')" required>
+                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(33, 'frosting')" required>
                                     <label class="form-check-label" for="<?php echo "frosting$frosting_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
@@ -441,7 +326,7 @@ body {
                                             $cake_frosting = $frosting['cake_frosting'];
                                             $frosting_img = $frosting['frosting_img'];
                                             $frosting_price = $frosting['frosting_price']; ?>
-                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(25, 'frosting')" required>
+                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(33, 'frosting')" required>
                                     <label class="form-check-label" for="<?php echo "frosting$frosting_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
@@ -463,7 +348,7 @@ body {
                                             $cake_frosting = $frosting['cake_frosting'];
                                             $frosting_img = $frosting['frosting_img'];
                                             $frosting_price = $frosting['frosting_price']; ?>
-                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(25, 'frosting')" required>
+                                    <input class="form-check-input" type="radio" name="frosting" id="<?php echo "frosting$frosting_id"; ?>" value="<?php echo $frosting_id; ?>" onchange="updateProgressBar(33, 'frosting')" required>
                                     <label class="form-check-label" for="<?php echo "frosting$frosting_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
@@ -481,7 +366,7 @@ body {
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
-                        <h3 class="card-title mb-4">Step 5: Enter Message or Request</h3>
+                        <h3 class="card-title mb-4">Step 4: Enter Message or Request</h3>
                         <div class="row">
                             <div class="form-group">
                                 <textarea class="form-control" name="item_desc"></textarea>

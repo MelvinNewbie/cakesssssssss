@@ -81,7 +81,7 @@ body {
                             <h1 class="card-title text-center">Cake Customization Form</h1>
                         </div>
                             <?php
-                                $cat_details = getCategory(1, $conn); // Replace 1 with the desired product ID
+                                $cat_details = getCategory(3, $conn); // Replace 1 with the desired product ID
                                 if ($cat_details) {
                                     $cat_id = $cat_details['category_id'];
                                     echo "<input type='hidden' name='cat_id' value='$cat_id'>";
@@ -94,7 +94,7 @@ body {
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 100%">Progress</div>
                 </div>
           
-                <!-- Cake Shape -->
+                <!-- Cupcake Shape -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
@@ -103,40 +103,18 @@ body {
                             <div class="col">
                                 <div class="form-check">
                                     <?php
-                                        $shape = getShape(1, $conn);
-                                        if ($shape) {
-                                            $shape_id = $shape['shape_id'];
-                                            $cake_shape = $shape['cake_shape'];
-                                            $shape_photo = $shape['shape_photo'];
-	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
-                                    <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
-                                        <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
-                                        <div class="text-center"><?php echo $cake_shape; ?></div>
+                                        $filling = getCcFilling(1, $conn);
+                                        if ($filling) {
+                                            $filling_id = $filling['cc_filling_id'];
+                                            $cc_filling = $filling['cupcake_filling'];
+                                            $filling_photo = $filling['cc_filling_img'];
+	                                        $filling_price = $filling['filling_price']; ?>
+                                    <input class="form-check-input" type="radio" name="cc_filling" id="<?php echo "filling$filling_id"; ?>" value="<?php echo $filling_id; ?>" onchange="updateProgressBar(25, 'filling')" required>
+                                    <label class="form-check-label" for="<?php echo "filling$filling_id"; ?>">
+                                        <img class="image-size border border-dark" src="<?php echo $filling_photo; ?>" alt="<?php echo $filling_photo; ?>">
+                                        <div class="text-center"><?php echo $cc_filling; ?></div>
 
-                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Shape not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $shape = getShape(2, $conn);
-                                        if ($shape) {
-                                            $shape_id = $shape['shape_id'];
-                                            $cake_shape = $shape['cake_shape'];
-                                            $shape_photo = $shape['shape_photo'];
-	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
-                                    <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
-                                        <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
-                                        <div class="text-center"><?php echo $cake_shape; ?></div>
-
-                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
+                                        <input type='hidden' name='filling_price' value='<?php echo "$filling_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -147,51 +125,51 @@ body {
                             <div class="col">
                                 <div class="form-check">
                                     <?php
-                                        $shape = getShape(3, $conn);
-                                        if ($shape) {
-                                            $shape_id = $shape['shape_id'];
-                                            $cake_shape = $shape['cake_shape'];
-                                            $shape_photo = $shape['shape_photo'];
-	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
-                                    <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
-                                        <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
-                                        <div class="text-center"><?php echo $cake_shape; ?></div>
+                                        $filling = getCcFilling(2, $conn);
+                                        if ($filling) {
+                                            $filling_id = $filling['cc_filling_id'];
+                                            $cc_filling = $filling['cupcake_filling'];
+                                            $filling_photo = $filling['cc_filling_img'];
+	                                        $filling_price = $filling['filling_price']; ?>
+                                    <input class="form-check-input" type="radio" name="cc_filling" id="<?php echo "filling$filling_id"; ?>" value="<?php echo $filling_id; ?>" onchange="updateProgressBar(25, 'filling')" required>
+                                    <label class="form-check-label" for="<?php echo "filling$filling_id"; ?>">
+                                        <img class="image-size border border-dark" src="<?php echo $filling_photo; ?>" alt="<?php echo $filling_photo; ?>">
+                                        <div class="text-center"><?php echo $cc_filling; ?></div>
 
-                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
+                                        <input type='hidden' name='filling_price' value='<?php echo "$filling_price"; ?>'>
 
                                     </label>
                                     <?php 
                                     } else { echo "Shape not found."; } ?>
                                 </div>
                             </div>
-
                             <div class="col">
                                 <div class="form-check">
                                     <?php
-                                        $shape = getShape(4, $conn);
-                                        if ($shape) {
-                                            $shape_id = $shape['shape_id'];
-                                            $cake_shape = $shape['cake_shape'];
-                                            $shape_photo = $shape['shape_photo'];
-	                                        $shape_price = $shape['shape_price']; ?>
-                                    <input class="form-check-input" type="radio" name="shape" id="<?php echo "shape$shape_id"; ?>" value="<?php echo $shape_id; ?>" onchange="updateProgressBar(25, 'shape')" required>
-                                    <label class="form-check-label" for="<?php echo "shape$shape_id"; ?>">
-                                        <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
-                                        <div class="text-center"><?php echo $cake_shape; ?></div>
+                                        $filling = getCcFilling(3, $conn);
+                                        if ($filling) {
+                                            $filling_id = $filling['cc_filling_id'];
+                                            $cc_filling = $filling['cupcake_filling'];
+                                            $filling_photo = $filling['cc_filling_img'];
+	                                        $filling_price = $filling['filling_price']; ?>
+                                    <input class="form-check-input" type="radio" name="cc_filling" id="<?php echo "filling$filling_id"; ?>" value="<?php echo $filling_id; ?>" onchange="updateProgressBar(25, 'filling')" required>
+                                    <label class="form-check-label" for="<?php echo "filling$filling_id"; ?>">
+                                        <img class="image-size border border-dark" src="<?php echo $filling_photo; ?>" alt="<?php echo $filling_photo; ?>">
+                                        <div class="text-center"><?php echo $cc_filling; ?></div>
 
-                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
+                                        <input type='hidden' name='filling_price' value='<?php echo "$filling_price"; ?>'>
 
                                     </label>
                                     <?php 
                                     } else { echo "Shape not found."; } ?>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Cake Size -->
+                <!-- Capcake Size -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
@@ -200,38 +178,41 @@ body {
                             <div class="col">
                                 <div class="form-check">
                                     <?php
-                                        $size = getSize(1, $conn); // Replace 1 with the desired size ID
+                                        $size = getCcsize(1, $conn); // Replace 1 with the desired size ID
                                         if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
+                                            $cc_size_id = $size['cupcake_size_id'];
+                                            $cc_size = $size['cupcake_size'];
+                                            $cc_img = $size['cc_size_img'];
+                                            $cc_price = $size['cc_size_price'];
                                         ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
+                                    <input class="form-check-input" type="radio" name="cc_size" id="<?php echo "size$cc_size_id"; ?>" value="<?php echo $cc_size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
+                                        <img class="image-size border border-dark" src="<?php echo $cc_img; ?>" alt="<?php echo $cc_img; ?>">
+                                        <div class="text-center"><?php echo $cc_size; ?></div>
 
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
+                                        <input type='hidden' name='cc_price' value='<?php echo "$cc_price"; ?>'>
 
                                     </label>
                                     <?php 
                                     } else { echo "Size not found."; } ?>
                                 </div>
                             </div>
-
                             <div class="col">
                                 <div class="form-check">
                                     <?php
-                                        $size = getSize(2, $conn); // Replace 1 with the desired size ID
+                                        $size = getCcsize(2, $conn); // Replace 1 with the desired size ID
                                         if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
+                                            $cc_size_id = $size['cupcake_size_id'];
+                                            $cc_size = $size['cupcake_size'];
+                                            $cc_img = $size['cc_size_img'];
+                                            $cc_price = $size['cc_size_price'];
                                         ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
+                                    <input class="form-check-input" type="radio" name="cc_size" id="<?php echo "size$cc_size_id"; ?>" value="<?php echo $cc_size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
+                                        <img class="image-size border border-dark" src="<?php echo $cc_img; ?>" alt="<?php echo $cc_img; ?>">
+                                        <div class="text-center"><?php echo $cc_size; ?></div>
+                                        
+                                        <input type='hidden' name='cc_price' value='<?php echo "$cc_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -239,74 +220,12 @@ body {
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(3, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(4, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-check">
-                                    <?php
-                                        $size = getSize(5, $conn); // Replace 1 with the desired size ID
-                                        if ($size) {
-                                            $size_id = $size['cake_size_id'];
-                                            $cake_size = $size['cake_size'];
-                                            $size_price = $size['size_price'];
-                                        ?>
-                                    <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')" required>
-                                    <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-                                        <div class="text-center"><?php echo $cake_size; ?></div>
-
-                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
-
-                                    </label>
-                                    <?php 
-                                    } else { echo "Size not found."; } ?>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
                 </div>
 
-                <!-- Cake Flavor -->
+                <!-- Cupcake Flavor -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
@@ -404,7 +323,7 @@ body {
                     </div>
                 </div>
 
-                <!-- Cake Frosting -->
+                <!-- Cupcake Frosting -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">

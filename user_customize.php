@@ -169,7 +169,7 @@ body {
                             echo "<h5 class='card-title'>$cat_name</h5>";
                             echo "<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>";
                             echo "<div class='text-center'>";
-                            echo "<a href='#' class='c-button btn btn-dark'>Customize</a>";
+                            echo "<a href='user_customize_bento.php' class='c-button btn btn-dark'>Customize</a>";
                             echo "</div>";
                             echo "</div>";
                         }else{
@@ -198,7 +198,7 @@ body {
                             echo "<h5 class='card-title'>$cat_name</h5>";
                             echo "<p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>";
                             echo "<div class='text-center'>";
-                            echo "<a href='#' class='c-button btn btn-dark'>Customize</a>";
+                            echo "<a href='user_customize_cupcake.php' class='c-button btn btn-dark'>Customize</a>";
                             echo "</div>";
                             echo "</div>";
                         }else{
