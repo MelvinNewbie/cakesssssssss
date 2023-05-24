@@ -97,6 +97,8 @@
                         $stmt_products->execute();
                         $customize= $stmt_products->fetchAll(PDO::FETCH_ASSOC);
 
+                       
+
                         echo "<table class='table table-bordered'>";
                         echo "<thead>";
                             echo "<th>Category Name</th>";
@@ -108,7 +110,13 @@
                             echo "<th>Total</th>";
                             echo "<th>Remove</th>";
                         echo "</thead>";
+                        
+                    $Grandtotal = 0; // Initialize grand total
                     foreach($customize as $key => $row){
+                        // calculate Grand total
+                        
+                        $Grandtotal += $row['total'];
+
                         echo "<tr>";
                             echo "<td>" . $row['cat_name'] . "</td>";
                             echo "<td>" . $row['shape'] . "</td>";
@@ -121,7 +129,7 @@
                         echo "</tr>";
                         }
                         echo "</tr>";
-                        echo "<td colspan='7'><strong>Grand Total: </strong>Php </td>";           
+                        echo "<td colspan='7'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>";           
                         echo '<td><a class="btn btn-success me-5" href="m_checkout.php">Checkout</a></td>';                 
                         echo "</tr>";
                         echo "</table>";

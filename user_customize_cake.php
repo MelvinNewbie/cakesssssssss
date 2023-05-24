@@ -114,8 +114,7 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
 
-                                        <?php echo "<input type='hidden' name='shape_price' value='$shape_id'>"; ?>
-                                        <?php echo "<input type='hidden' name='shape_id' value='$shape_id'>"; ?>
+                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -137,8 +136,7 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
 
-                                        <?php echo "<input type='hidden' name='shape_price' value='$shape_id'>"; ?>
-                                        <?php echo "<input type='hidden' name='shape_id' value='$shape_id'>"; ?>
+                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -160,8 +158,7 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
 
-                                        <?php echo "<input type='hidden' name='shape_price' value='$shape_id'>"; ?>
-                                        <?php echo "<input type='hidden' name='shape_id' value='$shape_id'>"; ?>
+                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -183,8 +180,7 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $shape_photo; ?>" alt="<?php echo $cake_shape; ?>">
                                         <div class="text-center"><?php echo $cake_shape; ?></div>
 
-                                        <?php echo "<input type='hidden' name='shape_price' value='$shape_id'>"; ?>
-                                        <?php echo "<input type='hidden' name='shape_id' value='$shape_id'>"; ?>
+                                        <input type='hidden' name='shape_price' value='<?php echo "$shape_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -195,7 +191,7 @@ body {
                     </div>
                 </div>
 
-                <!-- Cake Flavor -->
+                <!-- Cake Size -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
@@ -214,8 +210,7 @@ body {
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
                                         <div class="text-center"><?php echo $cake_size; ?></div>
 
-                                        <?php echo "<input type='hidden' name='size_price' value='$size_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='size_id' value='$size_id'>"; ?>
+                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -236,8 +231,7 @@ body {
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
                                         <div class="text-center"><?php echo $cake_size; ?></div>
 
-                                        <?php echo "<input type='hidden' name='size_price' value='$size_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='size_id' value='$size_id'>"; ?>
+                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -258,8 +252,7 @@ body {
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
                                         <div class="text-center"><?php echo $cake_size; ?></div>
 
-                                        <?php echo "<input type='hidden' name='size_price' value='$size_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='size_id' value='$size_id'>"; ?>
+                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -280,8 +273,7 @@ body {
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
                                         <div class="text-center"><?php echo $cake_size; ?></div>
 
-                                        <?php echo "<input type='hidden' name='size_price' value='$size_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='size_id' value='$size_id'>"; ?>
+                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -300,11 +292,9 @@ body {
                                         ?>
                                     <input class="form-check-input" type="radio" name="size" id="<?php echo "size$size_id"; ?>" value="<?php echo $size_id; ?>" onchange="updateProgressBar(25, 'size')">
                                     <label class="form-check-label" for="<?php echo "size$size_id"; ?>">
-      
                                         <div class="text-center"><?php echo $cake_size; ?></div>
 
-                                        <?php echo "<input type='hidden' name='size_price' value='$size_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='size_id' value='$size_id'>"; ?>
+                                        <input type='hidden' name='size_price' value='<?php echo "$size_price"; ?>'>
 
                                     </label>
                                     <?php 
@@ -316,7 +306,7 @@ body {
                     </div>
                 </div>
 
-                <!-- Cake Size -->
+                <!-- Cake Flavor -->
 
                 <div class="card mt-3 border border-dark" style="background-color: pink;">
                     <div class="card-body">
@@ -335,9 +325,9 @@ body {
                                     <label class="form-check-label" for="<?php echo "flavor$flavor_id"; ?>">
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
-
-                                        <?php echo "<input type='hidden' name='flavor_price' value='$flavor_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='flavor_id' value='$flavor_id'>"; ?>
+                                        
+                                        <input type='hidden' name='flavor_price' value='<?php echo "$flavor_price"; ?>'>
+                                        
                                     </label>
                                     <?php 
                                     } else { echo "Flavor not found."; } ?>
@@ -358,8 +348,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
 
-                                        <?php echo "<input type='hidden' name='flavor_price' value='$flavor_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='flavor_id' value='$flavor_id'>"; ?>
+                                        <input type='hidden' name='flavor_price' value='<?php echo "$flavor_price"; ?>'>
+
                                     </label>
                                     <?php 
                                     } else { echo "Flavor not found."; } ?>
@@ -380,8 +370,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
 
-                                        <?php echo "<input type='hidden' name='flavor_price' value='$flavor_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='flavor_id' value='$flavor_id'>"; ?>
+                                        <input type='hidden' name='flavor_price' value='<?php echo "$flavor_price"; ?>'>
+
                                     </label>
                                     <?php 
                                     } else { echo "Flavor not found."; } ?>
@@ -402,8 +392,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $flavor_img; ?>" alt="<?php echo $flavor_img; ?>">
                                         <div class="text-center"><?php echo $cake_flavor; ?></div>
 
-                                        <?php echo "<input type='hidden' name='flavor_price' value='$flavor_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='flavor_id' value='$flavor_id'>"; ?>
+                                        <input type='hidden' name='flavor_price' value='<?php echo "$flavor_price"; ?>'>
+                                        
                                     </label>
                                     <?php 
                                     } else { echo "Flavor not found."; } ?>
@@ -434,8 +424,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
 
-                                        <?php echo "<input type='hidden' name='frosting_price' value='$frosting_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='frosting_id' value='$frosting_id'>"; ?>
+                                        <input type='hidden' name='frosting_price' value='<?php echo "$frosting_price"; ?>'>
+
                                     </label>
                                     <?php 
                                     } else { echo "frosting not found."; } ?>
@@ -456,8 +446,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
 
-                                        <?php echo "<input type='hidden' name='frosting_price' value='$frosting_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='frosting_id' value='$frosting_id'>"; ?>
+                                        <input type='hidden' name='frosting_price' value='<?php echo "$frosting_price"; ?>'>
+
                                     </label>
                                     <?php 
                                     } else { echo "frosting not found."; } ?>
@@ -478,8 +468,8 @@ body {
                                         <img class="image-size border border-dark" src="<?php echo $frosting_img; ?>" alt="<?php echo $cake_frosting; ?>">
                                         <div class="text-center"><?php echo $cake_frosting; ?></div>
 
-                                        <?php echo "<input type='hidden' name='frosting_price' value='$frosting_price'>"; ?>
-                                        <?php echo "<input type='hidden' name='frosting_id' value='$frosting_id'>"; ?>
+                                        <input type='hidden' name='frosting_price' value='<?php echo "$frosting_price"; ?>'>
+                                        
                                     </label>
                                     <?php 
                                     } else { echo "frosting not found."; } ?>
