@@ -3,18 +3,26 @@ include_once "conn_db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category_id = $_POST["cat_id"];
-    $shape = $_POST["shape"];
-    $size = $_POST["size"];
-    $flavor = $_POST["flavor"];
-    $frosting = $_POST["frosting"];
+    $shape = $_POST["shape_id"];
+    $size = $_POST["size_id"];
+    $flavor = $_POST["flavor_id"];
+    $frosting = $_POST["frosting_id"];
+
+    $sh_price = $_POST["shape_price"];
+    $si_price = $_POST["size_price"];
+    $fl_price = $_POST["flavor_price"];
+    $fr_price = $_POST["frosting_price"];
     
     $dedication = mysqli_real_escape_string($conn, $_POST['item_desc']);
+
+    // Calculate the total price
+    $total_price = $sh_price + $si_price + $fl_price + $fr_price;
   
     $user_id = $_SESSION['user_id'];
   
     // Perform the database query to insert the values
-    $sql = "INSERT INTO z_details (user_id, category_id, shape_id, cake_size_id, flavor_id, frosting_id, dedication)
-            VALUES ('$user_id', '$category_id', '$shape', '$size', '$flavor', '$frosting', '$dedication')";
+    $sql = "INSERT INTO z_details (user_id, category_id, shape_id, cake_size_id, flavor_id, frosting_id, total_price, dedication)
+            VALUES ('$user_id', '$category_id', '$shape', '$size', '$flavor', '$frosting', '$total_price', '$dedication')";
           
     // Execute the query
     if (mysqli_query($conn, $sql)) {
