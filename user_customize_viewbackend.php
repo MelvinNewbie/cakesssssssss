@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Redirect to checkout.php after successful insertion or update
-        header("Location: user_customize_checkout.php");
+        header("Location: user_customize_confirmation.php");
         exit;
     }
 }

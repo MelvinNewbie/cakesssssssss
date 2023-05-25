@@ -24,7 +24,16 @@
             echo "User not found.";  
         }
     }
+//    if(isset($_POST['add'])){
+//        $item_selected = $_POST['checkout-items'];
+//        $item_qty = $_POST['item_qty'];
+//        $item_id = $_POST['product_id'];
 
+//        echo $item_qty;
+//        echo $item_id;
+//        echo $item_selected;
+//        exit();
+//     }
 ?>
 
 
@@ -56,6 +65,36 @@
             padding: 10px;
         }
 
+        h1 {
+            color: black;
+        }
+
+        hr {
+            border-color: #28a745;
+        }
+
+        table {
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            vertical-align: middle;
+        }
+
+        img {
+            max-width: 50px;
+            height: auto;
+        }
+
+        .btn-cancel {
+            margin-right: 10px;
+        }
+
+        .btn-place-order {
+            background-color: #28a745;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -66,61 +105,155 @@
     renderCustomNavbar();
 ?>
 
-<h1 class="text-center">Order Confimation</h1>
+<h1 class="text-center">Checkout</h1>
 
 <div class="container">
-<?php 
-$user_id = $_SESSION['user_id'];
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <?php
+            
+    // If the user submitted a form to add an item to the cart
+ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id']) && isset($_POST['item_qty'])) {
+    // Get the item ID and quantity from the form
+    $item_id = filter_input(INPUT_POST, 'product_id', FILTER_SANITIZE_NUMBER_INT);
+    $item_qty = filter_input(INPUT_POST, 'item_qty', FILTER_SANITIZE_NUMBER_INT);
 
-$z_details = "SELECT
-    p.product_id,
-    p.product_name,
-    p.product_price,
-    p.product_img,
-    p.date_added AS product_date_added,
-    p.product_status,
-    c.item_category AS category,
-    d.total_price AS total
-FROM
-    z_products p
-    LEFT JOIN z_user u ON p.user_id = u.user_id
-    LEFT JOIN z_category c ON p.category_id = c.category_id
-    LEFT JOIN z_details d ON p.details_id = d.details_id
-WHERE
-    u.user_id = '$user_id'";
+    // Validate the item ID and quantity
+    if (!is_numeric($item_id) || !is_numeric($item_qty)) {
+        // Redirect the user back to the order display page with an error message
+        header('Location: user_customize_view.php?error=invalid_input');
+        exit;
+    }
 
-$stmt_products = $db->prepare($z_details);
-$stmt_products->execute();
-$customize = $stmt_products->fetchAll(PDO::FETCH_ASSOC);
+    // If the item is already in the cart, update its quantity
+    if (isset($_SESSION['cart'][$user_id][$item_id])) {
+        $_SESSION['cart'][$user_id][$item_id] += (int)$item_qty;
+    } else {
+        // Otherwise, add the item to the cart with the specified quantity
+        $_SESSION['cart'][$user_id][$item_id] = (int)$item_qty;
+    }
 
-
-$Grandtotal = 0; // Initialize grand total
-
+    // Redirect the user back to the order display page
+    header('Location: user_customize_view.php');
+    exit;
+}
 ?>
-<div class="row text-center">
-    <?php foreach ($customize as $key => $row): ?>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body" style = "background-color: pink;">
-                    <h5 class="card-title"><?php echo $row['product_name']; ?></h5>
-                    <p class="card-text">
-                        <strong>Category:</strong> <?php echo $row['category']; ?><br>
-                        <strong>Total:</strong> Php <?php echo $row['total']; ?>
-                    </p>
+            <?php
+                // Initialize total amount to 0
+                $total_amount = 0;
+
+                    // Display the contents of the cart
+                    echo "<table class='table table-bordered'>";
+                    echo '<thead><tr>';
+                    echo '<th>Item Name</th>';
+                    echo '<th>Quantity</th>';
+                    echo '<th>Price</th>';
+                    echo '<th>Subtotal</th>';
+                    echo '</tr></thead>';
                     
-                    <form action="user_customize_.php" method="post" class="mt-2">
-                        <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>" />
-                        <button type="submit" class="btn btn-success">Checkout</button>
-                    </form>
+                    foreach ($_SESSION['cart'] as $item_id => $item_qty) {          
+                        // Get the details of the item from the database
+                        $query = "SELECT product_name, product_price
+                                    FROM z_products
+                                    WHERE product_id = ?";
+
+                        $stmt = $db->prepare($query);
+                        $stmt->execute([$item_id]);
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    
+                        // Check if the query was successful
+                        if ($result) {
+                            // Calculate the subtotal for the item
+                            $subtotal = $item_qty * $result['product_price'];
+                            // Add the subtotal to the total amount
+                            $total_amount += $subtotal;
+                    
+                            // Display a row for the item in the cart                   
+                            echo '<tr>';                        
+                            echo '<td>' . $result['product_name'] . '</td>';                                          
+                            echo '<td>' . $item_qty . '</td>';                                          
+                            echo '<td>' . $result['product_price'] . '</td>';                                           
+                            echo '<td>' . $subtotal . '</td>';               
+                            echo '</tr>';                                  
+                        } else {                                     
+                            // If the query was not successful, display an error message                             
+                            echo '<tr><td colspan="5">Error retrieving item details from database</td></tr>';                                  
+                        }              
+                    }
+             
+                    // Display the total amount                       
+                    echo '<tr>';                       
+                    echo '<td colspan="3"></td>';                         
+                    echo '<td><strong>Total Amount: Php</strong> ' . $total_amount . '</td>';
+                    echo '</tr>';
+                    echo '</table>';
+    
+                    // Display a link to the checkout page if the cart is not empty
+                    if (!empty($_SESSION['cart'])) {              
+                        
+                    } else {
+                        // If the cart is empty, display a message              
+                        echo 'Your cart is empty.' . "<br>";
+                }     
+            ?>
+            
+
+                    </tbody>
+
+            <form action="checkout_backend.php" method="post">
+                <table class='table table-bordered'>
+                <div class="mb-3">
+                <label for="pickup_date" class="form-label">Pickup Date</label>
+                    <input type="datetime-local" required id="pickup_date" name="pickup_date" class="form-control" value="<?php echo isset($pickup_date) ? $pickup_date : ''; ?>">
                 </div>
-            </div>
+                <div class='text-end'>
+                    <a class="btn btn-danger me-2" href="user_cart.php">back</a>
+                    <input name='place_order' value='Place Order' type='submit' class='btn btn-success btn-place-order'>
+                </div>
+            </form>
+
+            <script src="js/bootstrap.js"></script>
+            <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the necessary elements
+    const quantityInputs = document.querySelectorAll('input[name="quantity[]"]');
+    const totalPriceElement = document.getElementById('total-price');
+    let totalPrice = 0;
+
+    // Calculate the initial total price
+    calculateTotalPrice();
+
+    // Update the total price when the quantity changes
+    quantityInputs.forEach(function(input) {
+      input.addEventListener('input', calculateTotalPrice);
+    });
+
+    function calculateTotalPrice() {
+      totalPrice = 0;
+      quantityInputs.forEach(function(input) {
+        const quantity = parseInt(input.value);
+        const productPrice = parseFloat(input.parentNode.previousElementSibling.textContent);
+        totalPrice += quantity * productPrice;
+      });
+
+      // Update the total price display
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+  });
+  
+                function cancelOrder() {
+                    // Implement cancellation logic here, such as clearing the cart or redirecting to a different page
+                    alert("Order has been canceled.");
+                }
+
+                function placeOrder() {
+                    // Implement order placement logic here, such as saving the order details to the database
+                    alert("Order has been placed.");
+                }
+            </script>
         </div>
-    <?php endforeach; ?>
+    </div>
 </div>
-
-
-        
-
 
 </body>
 </html>
