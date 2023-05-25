@@ -80,6 +80,7 @@
                                     echo "<table class='table table-bordered text-center'>";
                                     echo "<thead>";
                                         echo "<th>Category Name</th>";
+                                        echo "<th>Cake Name</th>";
                                         echo "<th>Cake Shape</th>";
                                         echo "<th>Cake Size</th>";
                                         echo "<th>Cake Flavor</th>";
@@ -94,6 +95,7 @@
                                     $Grandtotal += $row['total'];
                                     echo "<tr>";
                                         echo "<td>" . $row['cat_name'] . "</td>";
+                                        echo "<td>" . $row['flavor'] ." " . $row['frosting'] . " " . $row['cat_name'] . "</td>";
                                         echo "<td>" . $row['shape'] . "</td>";
                                         echo "<td>" . $row['size'] . "</td>";
                                         echo "<td>" . $row['flavor'] . "</td>";
@@ -103,13 +105,13 @@
                                         echo "<td><a class='btn btn-danger' href='user_customize_remove.php?details_id=". $row['details_id'] ."'> Remove </a> </td>";
                                         echo "</tr>";
                                     echo '<form action="user_customize_viewbackend.php" method="post">';
-                                    echo "<td colspan='7'></td>"; 
+                                    echo "<td colspan='8'></td>"; 
                                     echo '<input type="hidden" name="details_id" value="' . $row['details_id'] . '" />';         
                                     echo '<td><button type="submit" class="btn btn-success">Checkout</button></td>';                 
                                     echo "</tr>";
                                     echo "</form>";
                                     }
-                                    echo "<td colspan='8'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
+                                    echo "<td colspan='9'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
                                     echo "</table>";   
                                 ?>
                             </div>
@@ -132,8 +134,8 @@
                                     echo "<table class='table table-bordered text-center'>";
                                     echo "<thead>";
                                         echo "<th>Category Name</th>";
+                                        echo "<th>Bento Name</th>";
                                         echo "<th>Bento Shape</th>";
-                                        
                                         echo "<th>Bento Flavor</th>";
                                         echo "<th>Bento Frosting</th>";
                                         echo "<th>Dedication</th>";
@@ -146,8 +148,8 @@
                                     $Grandtotal += $row['total'];
                                     echo "<tr>";
                                         echo "<td>" . $row['cat_name'] . "</td>";
+                                        echo "<td>" . $row['flavor'] . " " . $row['frosting'] . " " . $row['cat_name'] . "</td>";
                                         echo "<td>" . $row['shape'] . "</td>";
-                                        
                                         echo "<td>" . $row['flavor'] . "</td>";
                                         echo "<td>" . $row['frosting'] . "</td>";
                                         echo "<td>" . $row['dedication'] . "</td>";
@@ -155,13 +157,13 @@
                                         echo "<td><a class='btn btn-danger' href='user_customize_remove.php?details_id=". $row['details_id'] ."'> Remove </a> </td>";
                                         echo "</tr>";
                                     echo '<form action="user_customize_viewbackend.php" method="post">';
-                                    echo "<td colspan='6'></td>"; 
+                                    echo "<td colspan='7'></td>"; 
                                     echo '<input type="hidden" name="details_id" value="' . $row['details_id'] . '" />';         
                                     echo '<td><button type="submit" class="btn btn-success">Checkout</button></td>';                 
                                     echo "</tr>";
                                     echo "</form>";
                                     }
-                                    echo "<td colspan='7'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
+                                    echo "<td colspan='8'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
                                     echo "</table>";   
                                 ?>
                             </div>
@@ -184,6 +186,7 @@
                                     echo "<table class='table table-bordered text-center'>";
                                     echo "<thead>";
                                         echo "<th>Category Name</th>";
+                                        echo "<th>Cupcake Name</th>";
                                         echo "<th>Cupcake Size</th>";
                                         echo "<th>Cake Filling</th>";
                                         echo "<th>Cake Flavor</th>";
@@ -198,6 +201,8 @@
                                     $Grandtotal += $row['total'];
                                     echo "<tr>";
                                         echo "<td>" . $row['cat_name'] . "</td>";
+                                        echo "<td>" . $row['flavor'] . " " . $row['frosting'] . " " . $row['cat_name'] . "</td>";
+                                        echo "<td>" . $row['cc_size'] . "</td>";
                                         echo "<td>" . $row['cc_size'] . "</td>";
                                         echo "<td>" . $row['cc_filling'] . "</td>";
                                         echo "<td>" . $row['flavor'] . "</td>";
@@ -207,13 +212,13 @@
                                         echo "<td><a class='btn btn-danger' href='user_customize_remove.php?details_id=". $row['details_id'] ."'> Remove </a> </td>";
                                         echo "</tr>";
                                     echo '<form action="user_customize_viewbackend.php" method="post">';
-                                    echo "<td colspan='7'></td>"; 
+                                    echo "<td colspan='9'></td>"; 
                                     echo '<input type="hidden" name="details_id" value="' . $row['details_id'] . '" />';         
                                     echo '<td><button type="submit" class="btn btn-success">Checkout</button></td>';                 
                                     echo "</tr>";
                                     echo "</form>";
                                     }
-                                    echo "<td colspan='8'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
+                                    echo "<td colspan='10'><strong>Grand Total: </strong>Php " . $Grandtotal . " </td>"; 
                                     echo "</table>";   
                                 ?>
                         </div>
